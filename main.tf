@@ -21,6 +21,13 @@ provider "aws" {}
 resource "aws_s3_bucket" "wkd" {
   bucket = "openpgpkey.${var.domain}--wkd"
   acl    = "private"
+
+  cors_rule {
+    allowed_headers = ["*"]
+    allowed_methods = ["GET"]
+    allowed_origins = ["*"]
+    max_age_seconds = 3600
+  }
 }
 
 resource "aws_cloudfront_origin_access_identity" "wkd" {
@@ -73,13 +80,15 @@ resource "aws_cloudfront_distribution" "wkd" {
   aliases = ["openpgpkey.${var.domain}"]
 
   default_cache_behavior {
-    allowed_methods = ["GET", "HEAD"]
-    cached_methods  = ["GET", "HEAD"]
+    allowed_methods = ["GET", "HEAD", "OPTIONS"]
+    cached_methods  = ["GET", "HEAD", "OPTIONS"]
 
     target_origin_id = "s3"
 
     forwarded_values {
       query_string = false
+
+      headers = ["Origin"]
 
       cookies {
         forward = "none"
