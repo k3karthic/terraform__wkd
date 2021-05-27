@@ -1,0 +1,5 @@
+.terraform
+tf.plan
+mumbai.tfvars
+terraform.tfstate
+terraform.tfstate.backup
