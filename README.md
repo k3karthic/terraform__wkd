@@ -1,5 +1,5 @@
 # Terraform - Host a Web Key Directory (WKD)
-Host a [Web Key Directory (WKD)](https://wiki.gnupg.org/WKD) to serve an OpenPGP public key at `https://openpgpkey.<domain.name>` using the [WKD Advanced Setup](https://keyoxide.org/guides/web-key-directory#the-advanced-setup).
+A [Terraform](https://www.terraform.io/) script to host a [Web Key Directory (WKD)](https://wiki.gnupg.org/WKD) to serve an OpenPGP public key at `https://openpgpkey.<domain.name>` using the [WKD Advanced Setup](https://keyoxide.org/guides/web-key-directory#the-advanced-setup).
 
 The public key is stored in an S3 bucket and served from a CloudFront distribution. CORS is enabled to allow [Keyoxide](https://keyoxide.org/) to encrypt messages using the public key and verify signatures created by the private key.
 
@@ -25,14 +25,14 @@ gpg --with-wkd-hash --fingerprint <email address>
 
 ### Step 1
 
-Use the following command to create a Terraform plan.
+Use the following command to create a [Terraform plan](https://www.terraform.io/docs/cli/run/index.html#planning).
 ```
 ./bin/plan.sh
 ```
 
 To avoid fetching the latest state of resources, use the following command.
 ```
-./bin/plan.sh --refresh=false
+./bin/plan.sh -refresh=false
 ```
 
 ### Step 2
@@ -44,7 +44,7 @@ Review the plan using the following command.
 
 ### Step 3
 
-Execute the plan using the following command.
+[Apply](https://www.terraform.io/docs/cli/run/index.html#applying) the plan using the following command.
 ```
 ./bin/apply.sh
 ```
