@@ -21,6 +21,8 @@ gpg --with-wkd-hash --fingerprint <email address>
 
 **Step 4.** Obtain a certificate from [AWS Certificate Manager](https://aws.amazon.com/certificate-manager/) in the [US East (N. Virginia)](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/cnames-and-https-requirements.html#https-requirements-aws-region) region for your domain and save the ARN in `acm_arn`.
 
+![acm screenshot](https://github.com/k3karthic/terraform__wkd/raw/main/resources/acm_screenshot.png)
+
 ## Deployment
 
 ### Step 1
