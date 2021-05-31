@@ -1,7 +1,7 @@
 # Terraform - Host a Web Key Directory (WKD)
-A [Terraform](https://www.terraform.io/) script to host a [Web Key Directory (WKD)](https://wiki.gnupg.org/WKD) to serve an OpenPGP public key at `https://openpgpkey.<domain.name>` using the [WKD Advanced Setup](https://keyoxide.org/guides/web-key-directory#the-advanced-setup).
+A [Terraform](https://www.terraform.io/) script to host a [Web Key Directory (WKD)](https://wiki.gnupg.org/WKD) to serve an [OpenPGP](https://en.wikipedia.org/wiki/Pretty_Good_Privacy) public key at `https://openpgpkey.<domain.name>` using the [WKD Advanced Setup](https://keyoxide.org/guides/web-key-directory#the-advanced-setup).
 
-The public key is stored in an S3 bucket and served from a CloudFront distribution. CORS is enabled to allow [Keyoxide](https://keyoxide.org/) to encrypt messages using the public key and verify signatures created by the private key.
+The public key is stored in an [Amazon S3](https://aws.amazon.com/s3/) bucket and served from an [Amazon CloudFront](https://aws.amazon.com/cloudfront/) distribution. [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) is enabled to allow [Keyoxide](https://keyoxide.org/) to encrypt messages using the public key and verify signatures created by the private key.
 
 ## Configuration
 
@@ -19,7 +19,7 @@ gpg --with-wkd-hash --fingerprint <email address>
 
 **Step 3.** Export your public key into the `keys` folder using the script `bin/update_key.sh`. Replace `A38FE080` with your public key id and `m5am4h8agwz48rkwjqeeyp49pi8re5kb` with your WKD hash in `bin/update_key.sh`
 
-**Step 4.** Obtain a certificate from [ACM](https://aws.amazon.com/certificate-manager/) for your domain and save the ARN in `acm_arn`.
+**Step 4.** Obtain a certificate from [AWS Certificate Manager](https://aws.amazon.com/certificate-manager/) in the [US East (N. Virginia)](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/cnames-and-https-requirements.html#https-requirements-aws-region) region for your domain and save the ARN in `acm_arn`.
 
 ## Deployment
 
