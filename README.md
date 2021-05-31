@@ -53,7 +53,7 @@ Review the plan using the following command.
 
 ## Encryption
 
-Sensitive files like the input variables (mumbai.tfvars) and Terraform state files are encrypted before being stored in the repository. 
+Sensitive files like the input variables (mumbai.tfvars) and [Terraform state](https://www.terraform.io/docs/language/state/index.html) files (terraform.tfstate) are encrypted before being stored in the repository. 
 
 You must add the unencrypted file paths to `.gitignore`.
 
