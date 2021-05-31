@@ -11,13 +11,15 @@ The public key is stored in an S3 bucket and served from a CloudFront distributi
 1. `bin/encrypt.sh`
 1. `bin/decrypt.sh`
 
-**Step 2.** Get the WKD hash for your key using the following gpg command and save it as `key_hash`. The hash is just below the `uid` as `<hash>@<domain>`.
+**Step 2.** Get the WKD hash for your public key using the following gpg command and save it as `key_hash`. The hash is just below the `uid` as `<hash>@<domain>`.
 ```
 gpg --with-wkd-hash --fingerprint <email address>
 ```
 ![gpg screenshot](https://github.com/k3karthic/terraform__wkd/raw/main/resources/gpg_wkd_hash_screenshot.png)
 
-**Step 3.** Obtain a certificate from [ACM](https://aws.amazon.com/certificate-manager/) for your domain and save the ARN in `acm_arn`.
+**Step 3.** Export your public key into the `keys` folder using the script `bin/update_key.sh`. Replace `A38FE080` with your public key id in `bin/update_key.sh`
+
+**Step 4.** Obtain a certificate from [ACM](https://aws.amazon.com/certificate-manager/) for your domain and save the ARN in `acm_arn`.
 
 ## Deployment
 
