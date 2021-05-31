@@ -107,7 +107,7 @@ resource "aws_cloudfront_distribution" "wkd" {
 }
 
 ##
-## CloudFront Access to S3
+## Allow CloudFront to access S3
 ##
 
 resource "aws_cloudfront_origin_access_identity" "wkd" {
