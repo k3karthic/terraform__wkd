@@ -18,6 +18,10 @@ provider "aws" {}
  * Configuration
  */
 
+##
+## S3 Bucket
+##
+
 resource "aws_s3_bucket" "wkd" {
   bucket = "openpgpkey.${var.domain}--wkd"
   acl    = "private"
@@ -30,26 +34,9 @@ resource "aws_s3_bucket" "wkd" {
   }
 }
 
-resource "aws_cloudfront_origin_access_identity" "wkd" {
-  comment = "Access to wkd bucket"
-}
-
-data "aws_iam_policy_document" "wkd_s3_policy" {
-  statement {
-    actions   = ["s3:GetObject"]
-    resources = ["${aws_s3_bucket.wkd.arn}/*"]
-
-    principals {
-      type        = "AWS"
-      identifiers = [aws_cloudfront_origin_access_identity.wkd.iam_arn]
-    }
-  }
-}
-
-resource "aws_s3_bucket_policy" "wkd" {
-  bucket = aws_s3_bucket.wkd.id
-  policy = data.aws_iam_policy_document.wkd_s3_policy.json
-}
+##
+## Upload Key & WKD Policy
+##
 
 resource "aws_s3_bucket_object" "policy" {
   bucket  = aws_s3_bucket.wkd.id
@@ -63,6 +50,10 @@ resource "aws_s3_bucket_object" "key" {
   source = "keys/${var.key_hash}"
   etag   = filemd5("keys/${var.key_hash}")
 }
+
+##
+## CloudFront
+##
 
 resource "aws_cloudfront_distribution" "wkd" {
   origin {
@@ -113,4 +104,29 @@ resource "aws_cloudfront_distribution" "wkd" {
     ssl_support_method  = "sni-only"
     acm_certificate_arn = var.acm_arn
   }
+}
+
+##
+## CloudFront Access to S3
+##
+
+resource "aws_cloudfront_origin_access_identity" "wkd" {
+  comment = "Access to wkd bucket"
+}
+
+data "aws_iam_policy_document" "wkd_s3_policy" {
+  statement {
+    actions   = ["s3:GetObject"]
+    resources = ["${aws_s3_bucket.wkd.arn}/*"]
+
+    principals {
+      type        = "AWS"
+      identifiers = [aws_cloudfront_origin_access_identity.wkd.iam_arn]
+    }
+  }
+}
+
+resource "aws_s3_bucket_policy" "wkd" {
+  bucket = aws_s3_bucket.wkd.id
+  policy = data.aws_iam_policy_document.wkd_s3_policy.json
 }
