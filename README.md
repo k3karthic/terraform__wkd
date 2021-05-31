@@ -5,7 +5,7 @@ The public key is stored in an [Amazon S3](https://aws.amazon.com/s3/) bucket an
 
 ## Configuration
 
-**Step 1.** Create a file to store the input variables using the sample file `mumbai.tfvars.sample`. The file should be called `mumbai.tfvars` or edit the following files with the appropriate filename,
+**Step 1.** Create a file to store the [Terraform input variables](https://www.terraform.io/docs/language/values/variables.html) using the sample file `mumbai.tfvars.sample`. The file should be called `mumbai.tfvars` or edit the following files with the appropriate filename,
 1. `.gitignore`
 1. `bin/plan.sh`
 1. `bin/encrypt.sh`
