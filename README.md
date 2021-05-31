@@ -23,6 +23,12 @@ gpg --with-wkd-hash --fingerprint <email address>
 
 ![acm screenshot](https://github.com/k3karthic/terraform__wkd/raw/main/resources/acm_screenshot.png)
 
+## Authentication
+
+This Terraform script uses the [HashiCorp AWS provider](https://registry.terraform.io/providers/hashicorp/aws/latest/docs) and the authentication options for the provider are available at [https://registry.terraform.io/providers/hashicorp/aws/latest/docs#authentication](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#authentication).
+
+The [AWS CloudShell](https://aws.amazon.com/cloudshell/) is a pre-authenticated browser-based shell that can be used to deploy this script without additional configuration.
+
 ## Deployment
 
 ### Step 1
