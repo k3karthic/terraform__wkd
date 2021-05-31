@@ -25,26 +25,26 @@ gpg --with-wkd-hash --fingerprint <email address>
 
 ### Step 1
 
-Create a Terraform plan by running plan.sh; the script will read input variables from the file mumbai.tfvars.
+Use the following command to create a Terraform plan.
 ```
 ./bin/plan.sh
 ```
 
-To avoid fetching the latest state of resources, run the following command.
+To avoid fetching the latest state of resources, use the following command.
 ```
 ./bin/plan.sh --refresh=false
 ```
 
 ### Step 2
 
-Review the generated plan.
+Review the plan using the following command.
 ```
 ./bin/view.sh
 ```
 
 ### Step 3
 
-Run the verified plan.
+Execute the plan using the following command.
 ```
 ./bin/apply.sh
 ```
