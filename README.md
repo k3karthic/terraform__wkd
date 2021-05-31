@@ -62,7 +62,7 @@ Use the following command to decrypt the files after cloning the repository.
 ./bin/decrypt.sh
 ```
 
-Use the following command after running `bin/apply.sh` to update the encrypted files.
+Use the following command after running `bin/apply.sh` to encrypt the updated state files.
 ```
 ./bin/encrypt.sh <gpg key id>
 ```
