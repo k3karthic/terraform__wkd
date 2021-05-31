@@ -9,23 +9,23 @@ This Terraform script was used to deploy the key at [https://keyoxide.org/wkd/ka
 
 ## Configuration
 
-**Step 1.** Create a file to store the [Terraform input variables](https://www.terraform.io/docs/language/values/variables.html) using the sample file `mumbai.tfvars.sample`. The file should be called `mumbai.tfvars` or edit the following files with the appropriate filename,
-1. `.gitignore`
-1. `bin/plan.sh`
-1. `bin/encrypt.sh`
-1. `bin/decrypt.sh`
+1. Create a file to store the [Terraform input variables](https://www.terraform.io/docs/language/values/variables.html) using the sample file `mumbai.tfvars.sample`. The file should be called `mumbai.tfvars` or edit the following files with the appropriate filename,
+	1. `.gitignore`
+	1. `bin/plan.sh`
+	1. `bin/encrypt.sh`
+	1. `bin/decrypt.sh`
 
-**Step 2.** Get the WKD hash for your public key using the following gpg command and save it as `key_hash`. The hash is just below the `uid` as `<hash>@<domain>`.
-```
-gpg --with-wkd-hash --fingerprint <email address>
-```
-![gpg screenshot](https://github.com/k3karthic/terraform__wkd/raw/main/resources/gpg_wkd_hash_screenshot.png)
+1. Get the WKD hash for your public key using the following gpg command and save it as `key_hash`. The hash is just below the `uid` as `<hash>@<domain>`.
+	```
+	gpg --with-wkd-hash --fingerprint <email address>
+	```
+	![gpg screenshot](https://github.com/k3karthic/terraform__wkd/raw/main/resources/gpg_wkd_hash_screenshot.png)
 
-**Step 3.** Export your public key into the `keys` folder using the script `bin/update_key.sh`. Replace `A38FE080` with your public key id and `m5am4h8agwz48rkwjqeeyp49pi8re5kb` with your WKD hash in `bin/update_key.sh`
+1. Export your public key into the `keys` folder using the script `bin/update_key.sh`. Replace `A38FE080` with your public key id and `m5am4h8agwz48rkwjqeeyp49pi8re5kb` with your WKD hash in `bin/update_key.sh`
 
-**Step 4.** Obtain a certificate from [AWS Certificate Manager](https://aws.amazon.com/certificate-manager/) in the [US East (N. Virginia)](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/cnames-and-https-requirements.html#https-requirements-aws-region) region for your domain and save the ARN in `acm_arn`.
+1. Obtain a certificate from [AWS Certificate Manager](https://aws.amazon.com/certificate-manager/) in the [US East (N. Virginia)](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/cnames-and-https-requirements.html#https-requirements-aws-region) region for your domain and save the ARN in `acm_arn`.
 
-![acm screenshot](https://github.com/k3karthic/terraform__wkd/raw/main/resources/acm_screenshot.png)
+	![acm screenshot](https://github.com/k3karthic/terraform__wkd/raw/main/resources/acm_screenshot.png)
 
 ## Authentication
 
@@ -35,31 +35,25 @@ This Terraform script uses the [HashiCorp AWS provider](https://registry.terrafo
 
 ## Deployment
 
-### Step 1
+1. Use the following command to create a [Terraform plan](https://www.terraform.io/docs/cli/run/index.html#planning).
+	```
+	./bin/plan.sh
+	```
 
-Use the following command to create a [Terraform plan](https://www.terraform.io/docs/cli/run/index.html#planning).
-```
-./bin/plan.sh
-```
+	To avoid fetching the latest state of resources, use the following command.
+	```
+	./bin/plan.sh -refresh=false
+	```
 
-To avoid fetching the latest state of resources, use the following command.
-```
-./bin/plan.sh -refresh=false
-```
+1. Review the plan using the following command.
+	```
+	./bin/view.sh
+	```
 
-### Step 2
-
-Review the plan using the following command.
-```
-./bin/view.sh
-```
-
-### Step 3
-
-[Apply](https://www.terraform.io/docs/cli/run/index.html#applying) the plan using the following command.
-```
-./bin/apply.sh
-```
+1. [Apply](https://www.terraform.io/docs/cli/run/index.html#applying) the plan using the following command.
+	```
+	./bin/apply.sh
+	```
 
 ## Encryption
 
