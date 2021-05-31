@@ -3,6 +3,10 @@ A [Terraform](https://www.terraform.io/) script to host a [Web Key Directory (WK
 
 The public key is stored in an [Amazon S3](https://aws.amazon.com/s3/) bucket and served from an [Amazon CloudFront](https://aws.amazon.com/cloudfront/) distribution. [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) is enabled to allow [Keyoxide](https://keyoxide.org/) to encrypt messages using the public key and verify signatures created by the private key.
 
+This script was used to deploy the key at [https://keyoxide.org/wkd/karthic%40maverickgeek.xyz](https://keyoxide.org/wkd/karthic%40maverickgeek.xyz).
+
+![demo screenshot](https://github.com/k3karthic/terraform__wkd/raw/main/resources/demo_screenshot.png)
+
 ## Configuration
 
 **Step 1.** Create a file to store the [Terraform input variables](https://www.terraform.io/docs/language/values/variables.html) using the sample file `mumbai.tfvars.sample`. The file should be called `mumbai.tfvars` or edit the following files with the appropriate filename,
