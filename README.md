@@ -17,7 +17,7 @@ gpg --with-wkd-hash --fingerprint <email address>
 ```
 ![gpg screenshot](https://github.com/k3karthic/terraform__wkd/raw/main/resources/gpg_wkd_hash_screenshot.png)
 
-**Step 3.** Export your public key into the `keys` folder using the script `bin/update_key.sh`. Replace `A38FE080` with your public key id in `bin/update_key.sh`
+**Step 3.** Export your public key into the `keys` folder using the script `bin/update_key.sh`. Replace `A38FE080` with your public key id and `m5am4h8agwz48rkwjqeeyp49pi8re5kb` with your WKD hash in `bin/update_key.sh`
 
 **Step 4.** Obtain a certificate from [ACM](https://aws.amazon.com/certificate-manager/) for your domain and save the ARN in `acm_arn`.
 
