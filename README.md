@@ -1,5 +1,5 @@
-# Terraform - Host OpenPGP using Web Key Directory (WKD)
-Host a [Web Key Directory (WKD)](https://wiki.gnupg.org/WKD) to serve an OpenPGP public key using the [Advanced Setup](https://keyoxide.org/guides/web-key-directory#the-advanced-setup). The public key will be hosted at https://openpgpkey.domain.name.
+# Terraform - Host a Web Key Directory (WKD)
+Host a [Web Key Directory (WKD)](https://wiki.gnupg.org/WKD) to serve an OpenPGP public key at `https://openpgpkey.<domain.name>` using the [WKD Advanced Setup](https://keyoxide.org/guides/web-key-directory#the-advanced-setup).
 
 The public key is stored in an S3 bucket and served from a CloudFront distribution. CORS is enabled to allow [Keyoxide](https://keyoxide.org/) to encrypt messages using the public key and verify signatures created by the private key.
 
