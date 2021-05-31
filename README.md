@@ -1,11 +1,22 @@
-# Terraform - Host OpenPGP keys under a domain as a Web Key Directory (WKD)
-Host a [Web Key Directory (WKD)](https://wiki.gnupg.org/WKD) to serve public keys usig the [Advanced Setup](https://keyoxide.org/guides/web-key-directory#the-advanced-setup) at https://openpgpkey.<domain\>
+# Terraform - Host OpenPGP using Web Key Directory (WKD)
+Host a [Web Key Directory (WKD)](https://wiki.gnupg.org/WKD) to serve an OpenPGP public key using the [Advanced Setup](https://keyoxide.org/guides/web-key-directory#the-advanced-setup). The public key will be hosted at https://openpgpkey.domain.name.
 
-The public key is stored in an S3 bucket and served from a CloudFront distribution. CORS is enabled to allow [Keyoxide](https://keyoxide.org/) to encrypt messages using the public key and verify signatures created by the secret key.
+The public key is stored in an S3 bucket and served from a CloudFront distribution. CORS is enabled to allow [Keyoxide](https://keyoxide.org/) to encrypt messages using the public key and verify signatures created by the private key.
 
-## Input Variables
+## Configuration
 
-Create a file to store the input variables using the sample file `mumbai.tfvars.sample`. The file should be called `mumbai.tfvars` or edit `bin/plan.sh` with the appropriate file name.
+1. Create a file to store the input variables using the sample file `mumbai.tfvars.sample`. The file should be called `mumbai.tfvars` or edit the following files with the appropriate filename,
+	1. `.gitignore`
+	1. `bin/plane.sh`
+	1. `bin/encrypt.sh`
+	1. `bin/decrypt.sh`
+
+1. Get the WKD hash for your key using the following gpg command and save it as `key_hash`.
+```
+gpg --with-wkd-hash --fingerprint <email address>
+```
+
+1. Obtain a certificate from [ACM](https://aws.amazon.com/certificate-manager/) for your domain and save the ARN in `acm_arn`.
 
 ## Deployment
 
