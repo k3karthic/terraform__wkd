@@ -1,15 +1,15 @@
 # Terraform - Host a Web Key Directory (WKD)
-A [Terraform](https://www.terraform.io/) script to host a [Web Key Directory (WKD)](https://wiki.gnupg.org/WKD) to serve an [OpenPGP](https://en.wikipedia.org/wiki/Pretty_Good_Privacy) public key at `https://openpgpkey.<domain.name>` using the [WKD Advanced Setup](https://keyoxide.org/guides/web-key-directory#the-advanced-setup).
+A [Terraform](https://www.terraform.io/) script to host a [Web Key Directory (WKD)](https://wiki.gnupg.org/WKD). It serves an [OpenPGP](https://en.wikipedia.org/wiki/Pretty_Good_Privacy) public key at `https://openpgpkey.<domain.name>` using the [WKD Advanced Setup](https://keyoxide.org/guides/web-key-directory#the-advanced-setup).
 
-The public key is stored in an [Amazon S3](https://aws.amazon.com/s3/) bucket and served from an [Amazon CloudFront](https://aws.amazon.com/cloudfront/) distribution. [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) is enabled to allow [Keyoxide](https://keyoxide.org/) to encrypt messages using the public key and verify signatures created by the private key.
+An [Amazon S3](https://aws.amazon.com/s3/) bucket stores the key and [Amazon CloudFront](https://aws.amazon.com/cloudfront/) is the [Content Delivery Network (CDN)](https://en.wikipedia.org/wiki/Content_delivery_network). The Amazon S3 [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) allows [Keyoxide](https://keyoxide.org/) access to the public key.
 
-This Terraform script was used to deploy the key at [https://keyoxide.org/wkd/karthic%40maverickgeek.xyz](https://keyoxide.org/wkd/karthic%40maverickgeek.xyz).
+**Demo:** [https://keyoxide.org/wkd/karthic%40maverickgeek.xyz](https://keyoxide.org/wkd/karthic%40maverickgeek.xyz)
 
 ![demo screenshot](https://github.com/k3karthic/terraform__wkd/raw/main/resources/demo_screenshot.png)
 
 ## Configuration
 
-1. Create a file to store the [Terraform input variables](https://www.terraform.io/docs/language/values/variables.html) using the sample file `mumbai.tfvars.sample`. The file should be called `mumbai.tfvars` or edit the following files with the appropriate filename,
+1. Create a file to store the [Terraform input variables](https://www.terraform.io/docs/language/values/variables.html); use `mumbai.tfvars.sample` as a reference. Use `mumbai.tfvars` as the filename or change the name in the following files,
 	1. `.gitignore`
 	1. `bin/plan.sh`
 	1. `bin/encrypt.sh`
@@ -21,17 +21,25 @@ This Terraform script was used to deploy the key at [https://keyoxide.org/wkd/ka
 	```
 	![gpg screenshot](https://github.com/k3karthic/terraform__wkd/raw/main/resources/gpg_wkd_hash_screenshot.png)
 
-1. Export your public key into the `keys` folder using the script `bin/update_key.sh`. Replace `A38FE080` with your public key id and `m5am4h8agwz48rkwjqeeyp49pi8re5kb` with your WKD hash in `bin/update_key.sh`
+1. Export your public key into the `keys` folder using the script `bin/update_key.sh`.
+2. Update the following in in `bin/update_key.sh`,
+	1. Replace `A38FE080` with your public key id
+	2. Replace `m5am4h8agwz48rkwjqeeyp49pi8re5kb` with your WKD hash 
 
-1. Obtain a certificate from [AWS Certificate Manager](https://aws.amazon.com/certificate-manager/) in the [US East (N. Virginia)](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/cnames-and-https-requirements.html#https-requirements-aws-region) region for your domain and save the ARN in `acm_arn`.
+1. Fetch a certificate from [AWS Certificate Manager](https://aws.amazon.com/certificate-manager/) in [US East (N. Virginia)](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/cnames-and-https-requirements.html#https-requirements-aws-region) for your domain. Save the ARN in `acm_arn`.
 
 	![acm screenshot](https://github.com/k3karthic/terraform__wkd/raw/main/resources/acm_screenshot.png)
 
 ## Authentication
 
-This Terraform script uses the [HashiCorp AWS provider](https://registry.terraform.io/providers/hashicorp/aws/latest/docs) and the authentication options for the provider are available at [https://registry.terraform.io/providers/hashicorp/aws/latest/docs#authentication](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#authentication).
+Documentation for the [HashiCorp AWS provider](https://registry.terraform.io/providers/hashicorp/aws/latest/docs) is available at [registry.terraform.io/providers/hashicorp/aws/latest/docs](https://registry.terraform.io/providers/hashicorp/aws/latest/docs).
 
-[AWS CloudShell](https://aws.amazon.com/cloudshell/) is a pre-authenticated browser-based shell that can be used to deploy this script without additional configuration.
+[AWS CloudShell](https://aws.amazon.com/cloudshell/) can deploy this this script without configuration.
+
+## Code Mirrors
+
+* GitHub: [github.com/k3karthic/terraform__wkd](https://github.com/k3karthic/terraform__wkd/)
+* Codeberg: [codeberg.org/k3karthic/terraform__wkd](https://codeberg.org/k3karthic/terraform__wkd)
 
 ## Deployment
 
@@ -57,9 +65,7 @@ This Terraform script uses the [HashiCorp AWS provider](https://registry.terrafo
 
 ## Encryption
 
-Sensitive files like the input variables (mumbai.tfvars) and [Terraform state](https://www.terraform.io/docs/language/state/index.html) files (terraform.tfstate) are encrypted before being stored in the repository. 
-
-You must add the unencrypted file paths to `.gitignore`.
+Encrypt sensitive files (input variables, [Terraform state](https://www.terraform.io/docs/language/state/index.html) files) before saving them. `.gitignore` must contain the unencrypted file paths.
 
 Use the following command to decrypt the files after cloning the repository.
 ```
