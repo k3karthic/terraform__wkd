@@ -5,7 +5,7 @@ An [Amazon S3](https://aws.amazon.com/s3/) bucket stores the key and [Amazon Clo
 
 **Demo:** [https://keyoxide.org/wkd/karthic%40maverickgeek.xyz](https://keyoxide.org/wkd/karthic%40maverickgeek.xyz)
 
-![demo screenshot](https://github.com/k3karthic/terraform__wkd/raw/main/resources/demo_screenshot.png)
+![demo screenshot](resources/demo_screenshot.png)
 
 ## Configuration
 
@@ -19,7 +19,7 @@ An [Amazon S3](https://aws.amazon.com/s3/) bucket stores the key and [Amazon Clo
 	```
 	gpg --with-wkd-hash --fingerprint <email address>
 	```
-	![gpg screenshot](https://github.com/k3karthic/terraform__wkd/raw/main/resources/gpg_wkd_hash_screenshot.png)
+	![gpg screenshot](resources/gpg_wkd_hash_screenshot.png)
 
 1. Export your public key into the `keys` folder using the script `bin/update_key.sh`.
 2. Update the following in in `bin/update_key.sh`,
@@ -28,7 +28,7 @@ An [Amazon S3](https://aws.amazon.com/s3/) bucket stores the key and [Amazon Clo
 
 1. Fetch a certificate from [AWS Certificate Manager](https://aws.amazon.com/certificate-manager/) in [US East (N. Virginia)](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/cnames-and-https-requirements.html#https-requirements-aws-region) for your domain. Save the ARN in `acm_arn`.
 
-	![acm screenshot](https://github.com/k3karthic/terraform__wkd/raw/main/resources/acm_screenshot.png)
+	![acm screenshot](resources/acm_screenshot.png)
 
 ## Authentication
 
