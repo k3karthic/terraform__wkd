@@ -43,25 +43,25 @@ Documentation for the [HashiCorp AWS provider](https://registry.terraform.io/pro
 
 ## Deployment
 
-1. Use the following command to create a [Terraform plan](https://www.terraform.io/docs/cli/run/index.html#planning).
-	```
-	./bin/plan.sh
-	```
+*Step 1:* Use the following command to create a [Terraform plan](https://www.terraform.io/docs/cli/run/index.html#planning).
+```
+./bin/plan.sh
+```
 
-	To avoid fetching the latest state of resources, use the following command.
-	```
-	./bin/plan.sh -refresh=false
-	```
+To avoid fetching the latest state of resources, use the following command.
+```
+./bin/plan.sh -refresh=false
+```
 
-1. Review the plan using the following command.
-	```
-	./bin/view.sh
-	```
+*Step 2:* Review the plan using the following command.
+```
+./bin/view.sh
+```
 
-1. [Apply](https://www.terraform.io/docs/cli/run/index.html#applying) the plan using the following command.
-	```
-	./bin/apply.sh
-	```
+*Step 3:* [Apply](https://www.terraform.io/docs/cli/run/index.html#applying) the plan using the following command.
+```
+./bin/apply.sh
+```
 
 ## Encryption
 
