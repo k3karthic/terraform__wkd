@@ -7,9 +7,14 @@ An [Amazon S3](https://aws.amazon.com/s3/) bucket stores the key and [Amazon Clo
 
 ![demo screenshot](resources/demo_screenshot.png)
 
+## Code Mirrors
+
+* GitHub: [github.com/k3karthic/terraform__wkd](https://github.com/k3karthic/terraform__wkd/)
+* Codeberg: [codeberg.org/k3karthic/terraform__wkd](https://codeberg.org/k3karthic/terraform__wkd)
+
 ## Configuration
 
-1. Create a file to store the [Terraform input variables](https://www.terraform.io/docs/language/values/variables.html); use `mumbai.tfvars.sample` as a reference. Use `mumbai.tfvars` as the filename or change the name in the following files,
+1. Create a file to store the [Terraform input variables](https://www.terraform.io/docs/language/values/variables.html). Use `mumbai.tfvars.sample` as a reference. Keep `mumbai.tfvars` as the filename or change the name in the following files,
 	1. `.gitignore`
 	1. `bin/plan.sh`
 	1. `bin/encrypt.sh`
@@ -35,11 +40,6 @@ An [Amazon S3](https://aws.amazon.com/s3/) bucket stores the key and [Amazon Clo
 Documentation for the [HashiCorp AWS provider](https://registry.terraform.io/providers/hashicorp/aws/latest/docs) is available at [registry.terraform.io/providers/hashicorp/aws/latest/docs](https://registry.terraform.io/providers/hashicorp/aws/latest/docs).
 
 [AWS CloudShell](https://aws.amazon.com/cloudshell/) can deploy this this script without configuration.
-
-## Code Mirrors
-
-* GitHub: [github.com/k3karthic/terraform__wkd](https://github.com/k3karthic/terraform__wkd/)
-* Codeberg: [codeberg.org/k3karthic/terraform__wkd](https://codeberg.org/k3karthic/terraform__wkd)
 
 ## Deployment
 
