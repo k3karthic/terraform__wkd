@@ -1,7 +1,7 @@
 # Terraform - Host a Web Key Directory (WKD)
 A [Terraform](https://www.terraform.io/) script to host a [Web Key Directory (WKD)](https://wiki.gnupg.org/WKD). It serves an [OpenPGP](https://en.wikipedia.org/wiki/Pretty_Good_Privacy) public key at `https://openpgpkey.<domain.name>` using the [WKD Advanced Setup](https://keyoxide.org/guides/web-key-directory#the-advanced-setup).
 
-An [Amazon S3](https://aws.amazon.com/s3/) bucket stores the key and [Amazon CloudFront](https://aws.amazon.com/cloudfront/) is the [Content Delivery Network (CDN)](https://en.wikipedia.org/wiki/Content_delivery_network). The Amazon S3 [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) allows [Keyoxide](https://keyoxide.org/) access to the public key.
+An [Amazon S3](https://aws.amazon.com/s3/) bucket stores the key and [Amazon CloudFront](https://aws.amazon.com/cloudfront/) is the [Content Delivery Network (CDN)](https://en.wikipedia.org/wiki/Content_delivery_network). Amazon S3 [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) configuration allows [Keyoxide](https://keyoxide.org/) access to the public key.
 
 **Demo:** [https://keyoxide.org/wkd/karthic%40maverickgeek.xyz](https://keyoxide.org/wkd/karthic%40maverickgeek.xyz)
 
@@ -21,7 +21,7 @@ An [Amazon S3](https://aws.amazon.com/s3/) bucket stores the key and [Amazon Clo
 1. `bin/encrypt.sh`
 1. `bin/decrypt.sh`
 
-**Step 2:** Get the WKD hash for your public key using the following gpg command and save it as `key_hash`. The hash is just below the `uid` as `<hash>@<domain>`.
+**Step 2:** Get the WKD hash for your public key using the following gpg command and save it as `key_hash`. The hash is below the `uid` as `<hash>@<domain>`.
 ```
 $ gpg --with-wkd-hash --fingerprint <email address>
 ```
@@ -29,7 +29,7 @@ $ gpg --with-wkd-hash --fingerprint <email address>
 
 **Step 3:** Export your public key into the `keys` folder using the script `bin/update_key.sh`.
 
-**Step 4:** Update the following in in `bin/update_key.sh`,
+**Step 4:** Update the following in `bin/update_key.sh`,
 
 1. Replace `A38FE080` with your public key id
 1. Replace `m5am4h8agwz48rkwjqeeyp49pi8re5kb` with your WKD hash 
