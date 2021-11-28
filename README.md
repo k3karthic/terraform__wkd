@@ -14,25 +14,27 @@ An [Amazon S3](https://aws.amazon.com/s3/) bucket stores the key and [Amazon Clo
 
 ## Configuration
 
-*Step 1:* Create a file to store the [Terraform input variables](https://www.terraform.io/docs/language/values/variables.html). Use `mumbai.tfvars.sample` as a reference. Keep `mumbai.tfvars` as the filename or change the name in the following files,
-	1. `.gitignore`
-	1. `bin/plan.sh`
-	1. `bin/encrypt.sh`
-	1. `bin/decrypt.sh`
+**Step 1:** Create a file to store the [Terraform input variables](https://www.terraform.io/docs/language/values/variables.html). Use `mumbai.tfvars.sample` as a reference. Keep `mumbai.tfvars` as the filename or change the name in the following files,
 
-*Step 2:* Get the WKD hash for your public key using the following gpg command and save it as `key_hash`. The hash is just below the `uid` as `<hash>@<domain>`.
+1. `.gitignore`
+1. `bin/plan.sh`
+1. `bin/encrypt.sh`
+1. `bin/decrypt.sh`
+
+**Step 2:** Get the WKD hash for your public key using the following gpg command and save it as `key_hash`. The hash is just below the `uid` as `<hash>@<domain>`.
 ```
 $ gpg --with-wkd-hash --fingerprint <email address>
 ```
 ![gpg screenshot](resources/gpg_wkd_hash_screenshot.png)
 
-*Step 3:* Export your public key into the `keys` folder using the script `bin/update_key.sh`.
+**Step 3:** Export your public key into the `keys` folder using the script `bin/update_key.sh`.
 
-*Step 4:* Update the following in in `bin/update_key.sh`,
+**Step 4:** Update the following in in `bin/update_key.sh`,
+
 1. Replace `A38FE080` with your public key id
-2. Replace `m5am4h8agwz48rkwjqeeyp49pi8re5kb` with your WKD hash 
+1. Replace `m5am4h8agwz48rkwjqeeyp49pi8re5kb` with your WKD hash 
 
-*Step 5:* Fetch a certificate from [AWS Certificate Manager](https://aws.amazon.com/certificate-manager/) in [US East (N. Virginia)](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/cnames-and-https-requirements.html#https-requirements-aws-region) for your domain. Save the ARN in `acm_arn`.
+**Step 5:** Fetch a certificate from [AWS Certificate Manager](https://aws.amazon.com/certificate-manager/) in [US East (N. Virginia)](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/cnames-and-https-requirements.html#https-requirements-aws-region) for your domain. Save the ARN in `acm_arn`.
 
 ![acm screenshot](resources/acm_screenshot.png)
 
@@ -44,7 +46,7 @@ Documentation for the [HashiCorp AWS provider](https://registry.terraform.io/pro
 
 ## Deployment
 
-*Step 1:* Use the following command to create a [Terraform plan](https://www.terraform.io/docs/cli/run/index.html#planning).
+**Step 1:** Use the following command to create a [Terraform plan](https://www.terraform.io/docs/cli/run/index.html#planning).
 ```
 $ ./bin/plan.sh
 ```
@@ -54,12 +56,12 @@ To avoid fetching the latest state of resources, use the following command.
 $ ./bin/plan.sh -refresh=false
 ```
 
-*Step 2:* Review the plan using the following command.
+**Step 2:** Review the plan using the following command.
 ```
 $ ./bin/view.sh
 ```
 
-*Step 3:* [Apply](https://www.terraform.io/docs/cli/run/index.html#applying) the plan using the following command.
+**Step 3:** [Apply](https://www.terraform.io/docs/cli/run/index.html#applying) the plan using the following command.
 ```
 $ ./bin/apply.sh
 ```
