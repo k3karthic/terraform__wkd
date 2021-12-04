@@ -80,5 +80,5 @@ $ ./bin/decrypt.sh
 
 Use the following command after running `bin/apply.sh` to encrypt the updated state files.
 ```
-$ ./bin/encrypt.sh <GPG key id>
+$ ./bin/encrypt.sh <gpg key id>
 ```
