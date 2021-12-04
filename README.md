@@ -27,12 +27,15 @@ $ gpg --with-wkd-hash --fingerprint <email address>
 ```
 ![gpg screenshot](resources/gpg_wkd_hash_screenshot.png)
 
-**Step 3:** Export your public key into the `keys` folder using the script `bin/update_key.sh`.
-
-**Step 4:** Update the following in `bin/update_key.sh`,
+**Step 3:** Update the following in `bin/update_key.sh`,
 
 1. Replace `A38FE080` with your public key ID
 1. Replace `m5am4h8agwz48rkwjqeeyp49pi8re5kb` with your WKD hash 
+
+**Step 4:** Export your public key into the `keys` folder using the script `bin/update_key.sh`.
+```
+$ ./bin/update_key.sh
+```
 
 **Step 5:** Fetch a certificate from [AWS Certificate Manager](https://aws.amazon.com/certificate-manager/) in [US East (N. Virginia)](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/cnames-and-https-requirements.html#https-requirements-aws-region) for your domain. Save the ARN in `acm_arn`.
 
