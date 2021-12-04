@@ -1,4 +1,4 @@
-# Terraform - Host a Web Key Directory (WKD)
+# Terraform — Host a Web Key Directory (WKD)
 A [Terraform](https://www.terraform.io/) script to host a [Web Key Directory (WKD)](https://wiki.gnupg.org/WKD). It serves an [OpenPGP](https://en.wikipedia.org/wiki/Pretty_Good_Privacy) public key at `https://openpgpkey.<domain.name>` using the [WKD Advanced Setup](https://keyoxide.org/guides/web-key-directory#the-advanced-setup).
 
 An [Amazon S3](https://aws.amazon.com/s3/) bucket stores the key and [Amazon CloudFront](https://aws.amazon.com/cloudfront/) is the [Content Delivery Network (CDN)](https://en.wikipedia.org/wiki/Content_delivery_network). Amazon S3 [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) configuration allows [Keyoxide](https://keyoxide.org/) access to the public key.
@@ -21,7 +21,7 @@ An [Amazon S3](https://aws.amazon.com/s3/) bucket stores the key and [Amazon Clo
 1. `bin/encrypt.sh`
 1. `bin/decrypt.sh`
 
-**Step 2:** Get the WKD hash for your public key using the following gpg command and save it as `key_hash`. The hash is below the `uid` as `<hash>@<domain>`.
+**Step 2:** Get the WKD hash for your public key using the following GPG command and save it as `key_hash`. The hash is below the `uid` as `<hash>@<domain>`.
 ```
 $ gpg --with-wkd-hash --fingerprint <email address>
 ```
@@ -31,7 +31,7 @@ $ gpg --with-wkd-hash --fingerprint <email address>
 
 **Step 4:** Update the following in `bin/update_key.sh`,
 
-1. Replace `A38FE080` with your public key id
+1. Replace `A38FE080` with your public key ID
 1. Replace `m5am4h8agwz48rkwjqeeyp49pi8re5kb` with your WKD hash 
 
 **Step 5:** Fetch a certificate from [AWS Certificate Manager](https://aws.amazon.com/certificate-manager/) in [US East (N. Virginia)](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/cnames-and-https-requirements.html#https-requirements-aws-region) for your domain. Save the ARN in `acm_arn`.
@@ -40,9 +40,9 @@ $ gpg --with-wkd-hash --fingerprint <email address>
 
 ## Authentication
 
-Documentation for the [HashiCorp AWS provider](https://registry.terraform.io/providers/hashicorp/aws/latest/docs) is available at [registry.terraform.io/providers/hashicorp/aws/latest/docs](https://registry.terraform.io/providers/hashicorp/aws/latest/docs).
+[AWS provider](https://registry.terraform.io/providers/hashicorp/aws/latest/docs) documentation is at [registry.terraform.io/providers/hashicorp/aws/latest/docs](https://registry.terraform.io/providers/hashicorp/aws/latest/docs).
 
-[AWS CloudShell](https://aws.amazon.com/cloudshell/) can deploy this this script without configuration.
+[AWS CloudShell](https://aws.amazon.com/cloudshell/) can deploy this script without configuration.
 
 ## Deployment
 
@@ -77,5 +77,5 @@ $ ./bin/decrypt.sh
 
 Use the following command after running `bin/apply.sh` to encrypt the updated state files.
 ```
-$ ./bin/encrypt.sh <gpg key id>
+$ ./bin/encrypt.sh <GPG key id>
 ```
