@@ -49,22 +49,22 @@ $ ./bin/update_key.sh
 
 ## Deployment
 
-**Step 1:** Use the following command to create a [Terraform plan](https://www.terraform.io/docs/cli/run/index.html#planning).
+**Step 1:** Use the following command to create a [Terraform plan](https://www.terraform.io/docs/cli/run/index.html#planning),
 ```
 $ ./bin/plan.sh
 ```
 
-To avoid fetching the latest state of resources, use the following command.
+To avoid fetching the latest state of resources, use the following command,
 ```
 $ ./bin/plan.sh -refresh=false
 ```
 
-**Step 2:** Review the plan using the following command.
+**Step 2:** Review the plan using the following command,
 ```
 $ ./bin/view.sh
 ```
 
-**Step 3:** [Apply](https://www.terraform.io/docs/cli/run/index.html#applying) the plan using the following command.
+**Step 3:** [Apply](https://www.terraform.io/docs/cli/run/index.html#applying) the plan using the following command,
 ```
 $ ./bin/apply.sh
 ```
@@ -73,12 +73,12 @@ $ ./bin/apply.sh
 
 Encrypt sensitive files (input variables, [Terraform state](https://www.terraform.io/docs/language/state/index.html) files) before saving them. `.gitignore` must contain the unencrypted file paths.
 
-Use the following command to decrypt the files after cloning the repository.
+Use the following command to decrypt the files after cloning the repository,
 ```
 $ ./bin/decrypt.sh
 ```
 
-Use the following command after running `bin/apply.sh` to encrypt the updated state files.
+Use the following command after running `bin/apply.sh` to encrypt the updated state files,
 ```
 $ ./bin/encrypt.sh <gpg key id>
 ```
