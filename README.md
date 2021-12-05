@@ -3,7 +3,7 @@ A [Terraform](https://www.terraform.io/) script to host a [Web Key Directory (WK
 
 An [Amazon S3](https://aws.amazon.com/s3/) bucket stores the key and [Amazon CloudFront](https://aws.amazon.com/cloudfront/) is the [Content Delivery Network (CDN)](https://en.wikipedia.org/wiki/Content_delivery_network). Amazon S3 [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) configuration allows [Keyoxide](https://keyoxide.org/) access to the public key.
 
-**Demo:** [https://keyoxide.org/wkd/karthic%40maverickgeek.xyz](https://keyoxide.org/wkd/karthic%40maverickgeek.xyz)
+**Demo:** [keyoxide.org/wkd/karthic%40maverickgeek.xyz](https://keyoxide.org/wkd/karthic%40maverickgeek.xyz)
 
 ![demo screenshot](resources/demo_screenshot.png)
 
@@ -71,7 +71,7 @@ $ ./bin/apply.sh
 
 ## Encryption
 
-Encrypt sensitive files (input variables, [Terraform state](https://www.terraform.io/docs/language/state/index.html) files) before saving them. `.gitignore` must contain the unencrypted file paths.
+Encrypt sensitive files (Terraform [input variables](https://www.terraform.io/docs/language/values/variables.html) and [state](https://www.terraform.io/docs/language/state/index.html) files) before saving them. `.gitignore` must contain the unencrypted file paths.
 
 Use the following command to decrypt the files after cloning the repository,
 ```
