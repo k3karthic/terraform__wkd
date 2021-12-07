@@ -2,7 +2,6 @@
  * Variables
  */
 
-variable "region" {}
 variable "domain" {}
 
 variable "key_hash" {}

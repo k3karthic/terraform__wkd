@@ -1,5 +1,5 @@
 .terraform
 tf.plan
-mumbai.tfvars
+wkd.tfvars
 terraform.tfstate
 terraform.tfstate.backup

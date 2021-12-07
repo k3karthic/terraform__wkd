@@ -7,7 +7,7 @@ function decrypt {
     fi
 }
 
-decrypt "mumbai.tfvars"
+decrypt "wkd.tfvars"
 
 FILES=$(ls terraform.tfstate*gpg)
 for f in $FILES; do

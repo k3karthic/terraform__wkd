@@ -14,7 +14,7 @@ An [Amazon S3](https://aws.amazon.com/s3/) bucket stores the key and [Amazon Clo
 
 ## Configuration
 
-**Step 1:** Create a file to store the [Terraform input variables](https://www.terraform.io/docs/language/values/variables.html). Use `mumbai.tfvars.sample` as a reference. Keep `mumbai.tfvars` as the filename or change the name in the following files,
+**Step 1:** Create a file to store the [Terraform input variables](https://www.terraform.io/docs/language/values/variables.html). Use `wkd.tfvars.sample` as a reference. Keep `wkd.tfvars` as the filename or change the name in the following files,
 
 1. `.gitignore`
 1. `bin/plan.sh`

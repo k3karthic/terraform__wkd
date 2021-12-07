@@ -14,7 +14,7 @@ function encrypt {
     fi
 }
 
-encrypt "mumbai.tfvars"
+encrypt "wkd.tfvars"
 
 FILES=$(ls terraform.tfstate* | grep -v \.gpg)
 for f in $FILES; do
