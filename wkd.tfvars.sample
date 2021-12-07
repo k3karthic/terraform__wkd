@@ -1,4 +1,3 @@
-region = "<aws region shortcode like us-east-1>"
 domain = "<domain name>"
 
 key_hash = "m5am4h8agwz48rkwjqeeyp49pi8re5kb"
